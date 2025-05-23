@@ -29,9 +29,9 @@
                         {% comment %} on mettera ici à la place du count notre valeur totale en base {% endcomment %}
                             <a href="{% url 'ticketing:cart' %}">Voir le panier ({{ user.cart.orders.count }})</a>
                         {% endif %}                    
-                        <a href="{% url 'accounts:logout' %}" class="btn btn-primary px-4 me-md-2">Déconnexion</a>
+                        <a href="{% url 'accounts:logout' %}" class="btn btn-primary px-4 me-md-2">Se déconnecter</a>
                     {% else %}
-                        <a href="{% url 'accounts:login' %}" class="btn btn-primary px-4 me-md-2">Connexion</a>
+                        <a href="{% url 'accounts:login' %}" class="btn btn-primary px-4 me-md-2">Se connecter</a>
                         <a href="{% url 'accounts:signup' %}"class="btn btn-primary px-4 me-md-2">S'inscrire</a>
                     {% endif %}
                 </div>
