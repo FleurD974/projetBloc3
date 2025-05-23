@@ -25,7 +25,6 @@
 
                 <div class="col-md-3 text-end d-flex align-items-center justify-content-center">
                     {% if user.is_authenticated %}
-                        {{ user.email }}
                         {% if user.cart and not user.cart.ordered and user.cart.orders.count != 0 %}
                         {% comment %} on mettera ici à la place du count notre valeur totale en base {% endcomment %}
                             <a href="{% url 'ticketing:cart' %}">Voir le panier ({{ user.cart.orders.count }})</a>
