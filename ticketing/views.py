@@ -17,11 +17,6 @@ def all_offers(request):
     offers = Offer.objects.all()
     return render(request, 'ticketing/offers.html', context={"offers": offers})
 
-def offer_detail(request, slug):
-    offer = get_object_or_404(Offer, slug=slug)
-    
-    return render(request, 'ticketing/detail.html', context={"offer": offer})
-
 def add_to_cart(request, slug):
     user: Customer = request.user
     user.add_to_cart(slug=slug)
@@ -55,12 +50,3 @@ def create_checkout_session(request):
     cart.save()
     
     return render(request, 'ticketing/payment.html')
-
-def delete_cart(request):
-    if cart := request.user.cart:
-        cart.delete()
-        if self.instance.user.cart.orders.count() == 0:
-            self.instance.user.cart.delete()
-        return True
-    
-    return redirect('index')
