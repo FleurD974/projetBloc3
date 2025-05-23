@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <main>
 
         <div class="container col-xxl-8 px-4 py-5">
             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
@@ -42,8 +43,8 @@
                 <div class="card" style="width: 18rem;">
                     {% load static %}
                     <img src="{% static 'image/volleyball.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">                    <div class="card-body">
-                    <div class="card-body"></div>
-                        <h5 class="card-title">Volley-ball</h5>
+                        <div class="card-body">
+                            <h5 class="card-title">Volley-ball</h5>
                         <p class="card-text">Sport collectif qui oppose 2 équipes de 6 personnes. Ces équipes sont séparés par un filet et un match peut durer de 1h à 1h30.</p>
                     </div>
                 </div>
@@ -65,5 +66,6 @@
                 </div>
             </div>
         </div>
+    </main>
 
 {% endblock %}
