@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container d-flex flex-column justify-content-evenly">
+        <form method="POST" action="{% url 'ticketing:update-quantities' %}">
+            {% csrf_token %}
+            {% comment %} needed for django {% endcomment %}
+            {{ forms.management_form }}
+            {% for form in forms %}
+                <div>
+                    <h2>{{ form.instance.offer.name }}</h2>
+                    <p>{{ form.instance.offer.description}}</p>
+                    {{ form.as_p }}
+                </div>
+            {% endfor%}
+            <button class="btn btn-primary btn-lg px-4 me-md-2" type="submit">Mettre à jour les quantités</button>
+        </form>
+    
+    
+        {% comment %} it will direct to stripe payment interface {% endcomment %}
+        <form action="{% url 'ticketing:create-checkout-session' %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-primary btn-lg px-4 me-md-2 m-4" type="submit">Procéder au paiement</button>
+        </form>
+    </div>
+
+{% endblock %}
