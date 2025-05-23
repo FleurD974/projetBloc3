@@ -8,12 +8,13 @@
         rel="stylesheet" 
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" 
         crossorigin="anonymous">
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     </head>
     <body>
         <div class="container">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
                 <a href="{% url 'index' %}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                    <img src="media/logo_jo.png" alt="Logo des JOs" style="max-width: 50px">
+                    <img src="/media/logo_jo.png" alt="Logo des JOs" style="max-width: 50px">
                 </a>
 
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
@@ -23,13 +24,12 @@
                     <li><a href="#" class="nav-link px-2 link-dark">A propos</a></li>
                 </ul>
 
-                <div class="col-md-3 text-end d-flex align-items-center justify-content-center">
+                <div class="col-md-3 text-end d-flex align-items-center justify-content-around">
                     {% if user.is_authenticated %}
                         {% if user.cart and not user.cart.ordered and user.cart.orders.count != 0 %}
-                        {% comment %} on mettera ici à la place du count notre valeur totale en base {% endcomment %}
-                            <a href="{% url 'ticketing:cart' %}">Voir le panier ({{ user.cart.orders.count }})</a>
+                            <a href="{% url 'ticketing:cart' %}"><i class="fi fi-rr-shopping-cart"></i> ({{ user.cart.orders.count }})</a>
                         {% endif %}
-                        <a href="{% url 'accounts:profile' %}" class="btn btn-primary px-4 me-md-2">Mon compte</a>
+                        <a href="{% url 'accounts:profile' %}" ><i class="fi fi-rr-user"></i></a>
                         <a href="{% url 'accounts:logout' %}" class="btn btn-primary px-4 me-md-2">Se déconnecter</a>
                     {% else %}
                         <a href="{% url 'accounts:login' %}" class="btn btn-primary px-4 me-md-2">Se connecter</a>
