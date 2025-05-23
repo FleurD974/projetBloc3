@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal">Les offres</h1>
+            <p class="fs-5 text-muted">Différentes offres vous sont proposées afin de pouvoir accéder aux épreuves. Chaque offre donne accès à un nombre de personne différent afin de pouvoir assister aux épreuves entre amis ou en famille. N'attendez plus et faites votre choix, nous avons hâte de vous voir sur les différentes épreuves !</p>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            {% for offer in offers %}
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">{{ offer.name }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">{{ offer.price }}<small class="text-muted fw-light">€</small></h1>
+                            <p>{{ offer.description }}</p>
+                            {% if user.is_authenticated%}
+                                <a href="{% url 'ticketing:add-to-cart' offer.slug %}" class="btn btn-primary px-4 me-md-2">Ajouter au panier</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+
+{% endblock %}
