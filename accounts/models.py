@@ -30,7 +30,6 @@ class Customer(AbstractUser):
     username = None
     email = models.EmailField(max_length=240, unique=True)
     role = models.CharField(max_length=10, default='CUSTOMER')
-    phone_number = models.CharField(max_length=50)
     generated_key =models.CharField(max_length=255, default=secrets.token_hex(16))
     
     USERNAME_FIELD = "email"

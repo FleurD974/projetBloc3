@@ -10,10 +10,12 @@ User = get_user_model()
 
 def signup(request):
     if request.method == "POST":
-        username = request.POST.get("username")
+        email = request.POST.get("email")
         password = request.POST.get("password")
-        user = User.objects.create_user(username=username,
-                                    password=password)
+        last_name = request.POST.get("last_name")
+        first_name = request.POST.get("first_name")
+        user = User.objects.create_user(email=email,
+                                    password=password, last_name=last_name, first_name=first_name)
         login(request, user)
         return redirect('index')
         
